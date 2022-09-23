@@ -1,0 +1,121 @@
+<div class="container-sm mt-5" >
+    <div class="row">
+
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3>
+                        Jose Ricardo Zavala Rosales
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 ml-5 mr-5">
+    <div class="col-xl-5">
+    <div class="card">
+                <div class="card-body">
+                    <!-- Ligamos a form desde ts y submit a metodo desde ts-->
+                  <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <span class="input-group-text">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <input  formControlName="nombre" type="text" class="form-control" placeholder="Nombre de Usuario" aria-label="Nombre de Usuario" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <span class="input-group-text">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <input  formControlName="correo" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="input-group input-group mb-3">
+                                <div class="input-group-text">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-child" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input formControlName="edad" type="Number" class="form-control" placeholder="Edad" aria-label="Edad" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="input-group input-group mb-3">
+                                <div class="input-group-text">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input  formControlName="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                       
+                    </div>         
+                    <button type="submit" class="btn btn-dark btn-lg btn-block">Guardar Usuario</button>            
+                  </form>
+             
+                </div>
+    </div>
+    </div>
+    <div class="col-xl-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>
+                            Listado Usuarios
+                        </h3>
+
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th style ="word-break:break-all;" scope="col">Nombre</th>
+                                <th  style ="word-break:break-all;"scope="col">Edad</th>
+                                <th  style ="word-break:break-all;"scope="col">Direccion</th>
+                                <th style ="word-break:break-all;" scope="col">Correo Electronico</th>
+                                <th style ="word-break:break-all;"scope="col">Editar</th>
+                                <th  style ="word-break:break-all;"scope="col">Eliminar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tarjeta of listUsuarios;">
+                                    <td style ="word-break:break-all;">{{tarjeta.nombre}}</td>
+                                    <td style ="word-break:break-all;">{{tarjeta.edad}}</td>
+                                    <td style ="word-break:break-all;">{{tarjeta.direccion}}</td>
+                                    <td style ="word-break:break-all;">{{tarjeta.correoElectronico}}</td>
+                                    <td style ="word-break:break-all;"><i class="fa-sharp fa-solid fa-user-astronaut"></i>
+                                    </td>
+                                    <td style ="word-break:break-all;"><i (click)="eliminarusuario(tarjeta.id)"class="fa fa-trash" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+ 
+            
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
