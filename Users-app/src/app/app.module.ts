@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
 
 
 
@@ -13,12 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     UsuarioComponent,
+    PopUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

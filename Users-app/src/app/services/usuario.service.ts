@@ -15,6 +15,10 @@ export class UsuarioService {
     return this.http.get(this.urlapp + this.apiurl+"GetAll")
   }
 
+  getUsuario(id:any):Observable<any>{
+    return this.http.get(this.urlapp + this.apiurl+id)
+  }
+
   DeleteUsuario(id:number):Observable<any>{
     return this.http.delete(this.urlapp + this.apiurl+id)
   }
@@ -22,5 +26,10 @@ export class UsuarioService {
   SaveUser(usuario:any):Observable<any>{
     //, par on body
     return this.http.post(this.urlapp + this.apiurl,usuario)
+  }
+
+  UpdateUser(usuario:any):Observable<any>{
+    //, par on body
+    return this.http.put(this.urlapp + this.apiurl,usuario)
   }
 }

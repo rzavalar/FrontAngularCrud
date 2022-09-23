@@ -87,7 +87,7 @@
                                     <td style ="word-break:break-all;">{{tarjeta.edad}}</td>
                                     <td style ="word-break:break-all;">{{tarjeta.direccion}}</td>
                                     <td style ="word-break:break-all;">{{tarjeta.correoElectronico}}</td>
-                                    <td style ="word-break:break-all;"><i class="fa-sharp fa-solid fa-user-astronaut"></i>
+                                    <td style ="word-break:break-all;"><i (click)="functionedit(tarjeta.id)" class="fa-sharp fa-solid fa-user-astronaut"></i>
                                     </td>
                                     <td style ="word-break:break-all;"><i (click)="eliminarusuario(tarjeta.id)"class="fa fa-trash" aria-hidden="true"></i></td>
                                 </tr>
@@ -98,24 +98,6 @@
     </div>
     </div>
 </div>
-<ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
- 
-            
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
-  </ng-template>
+<!-- Adding modal -->
+<app-pop-up></app-pop-up>
   

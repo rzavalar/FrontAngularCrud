@@ -1,0 +1,59 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Actualizar Empleado</h4>
+        <button type="button" #closebtn class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="usform" (ngSubmit)="SaveEmployee()">
+            <div class="mb-3">
+                <label>ID</label>
+                <div class="input-group">
+                    <input name="id" class="form-control" formControlName="id">
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                  <span class="input-group-text">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  </span>
+                </div>
+                <input  formControlName="nombre" type="text" class="form-control" placeholder="Nombre de Usuario" aria-label="Nombre de Usuario" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                  <span class="input-group-text">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  </span>
+                </div>
+                <input  formControlName="correo" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="input-group input-group mb-3">
+                        <div class="input-group-text">
+                          <span class="input-group-text">
+                            <i class="fa fa-child" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <input formControlName="edad" type="Number" class="form-control" placeholder="Edad" aria-label="Edad" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="input-group input-group mb-3">
+                        <div class="input-group-text">
+                          <span class="input-group-text">
+                            <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <input  formControlName="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+               
+            </div>         
+            <button type="submit" class="btn btn-dark btn-lg btn-block">Guardar Usuario</button>      
+        </form>
+    </div>
+</ng-template>
+
+
+

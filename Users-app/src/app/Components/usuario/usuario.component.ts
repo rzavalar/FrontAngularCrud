@@ -1,31 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild  } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { PopUpComponent } from '../pop-up/pop-up.component';
+
 
 @Component({
   selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
+   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
-export class UsuarioComponent implements OnInit {
 
+
+
+export class UsuarioComponent implements OnInit {
+  
   listUsuarios:any[]=[
   ];
 
   form:FormGroup;
+  closeResult = '';
+
+  
 
   constructor(
     private _Usuarioservice:UsuarioService,
-    private fb:FormBuilder
-  ) { this.form = this.fb.group({
+    private fb:FormBuilder,
+   
+  )
+   { this.form = this.fb.group({
     nombre:[''],
     edad:[''],
     correo:[''],
     direccion:['']
   })}
-
+  @ViewChild(PopUpComponent) addview !:PopUpComponent
+ 
   ngOnInit(): void {
-    this.obtenerTarjetas();
+    this.obtenerUsuarios();
   }
 
   agregarUsuario(){
@@ -38,10 +49,10 @@ export class UsuarioComponent implements OnInit {
       direccion:this.form.get('direccion')?.value
     }
 
-    console.log(user);
+  
     this._Usuarioservice.SaveUser(user).subscribe(
       data=>{console.log(data);
-        this.obtenerTarjetas();
+        this.obtenerUsuarios();
         this.form.reset();
       },error=>{console.log(error)}
     );
@@ -49,24 +60,30 @@ export class UsuarioComponent implements OnInit {
 
   eliminarusuario(id:number){
     this._Usuarioservice.DeleteUsuario(id).subscribe(
-      data=>{console.log(data);
-        this.obtenerTarjetas();
+      data=>{
+        this.obtenerUsuarios();
       
       },error=>{console.log(error)}
     );
   }
 
-  obtenerTarjetas(){
+  public obtenerUsuarios(){
     this._Usuarioservice.getListUsuarios().subscribe(
-      data=>{console.log(data);
+      data=>{
         this.listUsuarios = data;
       
       },error=>{console.log(error)}
     );
   }
 
-  saveUsuario(usuario:any){
+  saveUsuario(){
       
   }
 
+  functionedit(code:number){
+    
+    this.addview.LoadEditData(code);
+
+  }
+  
 }
